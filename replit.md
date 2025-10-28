@@ -1,281 +1,188 @@
-# Дворец школьников "Digital Urpaq" - Petropavlovsk
+# SkillChain - Blockchain-Based Professional Certification Platform
 
-## Project Overview
-An interactive web application for Дворец школьников "Digital Urpaq" (Цифровой Урпақ) in Petropavlovsk, Kazakhstan. Features an AI-powered assistant that helps students discover clubs, take interest quizzes, chat with AI about programs, register for activities, and navigate the facility.
+## Overview
+SkillChain is a Web3 application on the Solana blockchain that offers verifiable NFT certificates for skill assessment. Users pay 0.15 SOL to generate AI-powered tests, take them, and receive an NFT certificate (Junior/Middle/Senior level) stored via Metaplex. The platform rewards users based on performance, blending educational testing with blockchain for immutable proof of skills. It aims for a user experience inspired by modern Web3 and educational platforms.
 
-## Facility Information
-- **Name**: Дворец школьников "DIGITAL URPAQ"
-- **Website**: https://digitalurpaq.edu.kz
-- **Location**: Petropavlovsk, Kazakhstan
-- **Address**: V438+J5W, ул. Таштинова, Петропавловск 150000
-- **Coordinates**: 54.8537°N, 69.1458°E
-- **Google Maps**: https://www.google.com/maps/place/54.8537,69.1458
-- **Phone**: Приемная: +7 (7152) 34-02-40, Ресепшн: +7 (7152) 50-17-03
-- **Description**: One of the largest institutions of additional education in Petropavlovsk with over 90 clubs across main directions, 80 of which are FREE
-- **Facilities**: 15 modern laboratories with high-tech equipment
-- **IT Center**: For intellectual development of children and youth
+## Recent Changes (October 27, 2025)
 
-## Key Features
-1. **AI Chat Assistant** - Full conversational AI chat focused on Digitalurpaq topics (NEW!)
-2. **Animated Assistant Character** - Friendly mascot with idle animations and motivational speech bubbles
-3. **Multi-Language Support** - Full internationalization in English, Kazakh, and Russian
-4. **AI-Powered Interest Quiz** - Uses Gemini AI to generate personalized club recommendations
-5. **Club Discovery** - Browse and search clubs by category with detailed information
-6. **Registration System** - Register for clubs with scheduling and conflict detection
-7. **Interactive Schedule** - Calendar view with 30-minute advance reminders
-8. **Google Maps Integration** - Virtual tours and directions to the facility (updated to new location)
-9. **Responsive Design** - Works on desktop, tablet, and mobile devices
+### On-Chain Reputation System & DAO Implementation
+**Architectural proof-of-concept for blockchain-native skill verification:**
 
-## Main Directions
+1. **Anchor Smart Contract Program** - Full Solana program implementation
+   - **SkillRegistry** - Global registry for validators, certificates, and users
+   - **UserProfile (PDA)** - On-chain user profiles with skill scores and achievements
+   - **Validator System** - DAO validators who approve and sign test results
+   - **EscrowAccount** - Smart contract-based payment distribution (DAO 50%, Project 40%, Reward Pool 10%)
+   - **SKILL Token** - Utility token for Skill-to-Earn economy
+   - **Files:** `programs/skillchain/src/` - Complete Anchor program with instructions and state management
 
-### 1. IT - ИНФОРМАЦИОННЫЕ ТЕХНОЛОГИИ
-- Programming of control and measurement systems
-- 3D prototyping and modeling
-- LEGO construction and robotics
-- Mechatronics
-- SDR Radio
-- Drone assembly and programming
-- Web development and design
+2. **On-Chain Verification API** - Backend integration with Anchor program
+   - `/api/onchain/profile/:walletAddress` - Fetch user's on-chain profile and PDA
+   - `/api/onchain/registry` - Get skill registry and program information
+   - `/api/onchain/verify-skill` - Verify user skills for dApp integrations
+   - `/api/dao/stats` - DAO statistics and metrics
+   - **Files:** `server/anchor-client.ts`, `server/routes.ts`
 
-### 2. НАУЧНО-БИОЛОГИЧЕСКОЕ НАПРАВЛЕНИЕ
-- Biotechnology
-- Hydroponics ("Green Business")
-- Ecology
-- Scientific research activities
+3. **DAO Frontend Page** - Complete governance interface
+   - On-chain profile display with PDA addresses
+   - Real-time DAO statistics (validators, certificates, users)
+   - Skill verification interface
+   - Reward distribution visualization
+   - Revenue streams breakdown
+   - **Files:** `client/src/pages/dao.tsx`, integrated in header navigation
 
-### 3. ХУДОЖЕСТВЕННО-ЭСТЕТИЧЕСКОЕ
-- Art school
-- Fine arts
-- Decorative and applied arts
-- Choreography
+4. **TypeScript SDK** - Client-side Anchor program integration
+   - PDA derivation for user profiles, registry, validators
+   - On-chain data fetching and parsing
+   - Skill verification utilities
+   - **Files:** `client/src/lib/anchor/skillchain-client.ts`
 
-### 4. ЖУРНАЛИСТИКА И МЕДИАТЕХНОЛОГИИ
-- Media journalism
-- Video production
-- Photography
-- Blogging
+5. **Current Implementation Status:**
+   - **Anchor Smart Contract:** Fully implemented in Rust, not yet compiled/deployed
+   - **API Layer:** Functional using PostgreSQL database simulation
+   - **Frontend:** DAO page displays simulated data from database
+   - **Production Status:** Architectural proof-of-concept, requires deployment and deserialization implementation
 
-### 5. БИЗНЕС ШКОЛА
-- Entrepreneurship basics
-- Financial literacy
-- Business project design
+6. **What Works Now (Database Simulation):**
+   - `/api/onchain/profile/:walletAddress` - Returns user profile data from PostgreSQL
+   - `/api/onchain/registry` - Returns platform statistics from PostgreSQL  
+   - `/api/onchain/verify-skill` - Skill verification API for dApp integrations
+   - `/api/dao/stats` - DAO statistics
+   - DAO frontend page with full UI
 
-### 6. ДЕБАТНЫЙ КЛУБ И КВН
-- Public speaking mastery
-- Art of debates
-- KVN and humor
+7. **Required for Production (True On-Chain):**
+   - Compile Anchor program with Rust toolchain (`anchor build`)
+   - Deploy program to Solana devnet (`anchor deploy`)
+   - Generate IDL and TypeScript types
+   - Implement Anchor account deserialization using IDL
+   - Update API layer to decode real on-chain PDA data
+   - Integration testing with deployed program
+   - See `ANCHOR_DEPLOYMENT.md` for complete deployment guide
 
-### 7. РАЗВЛЕКАТЕЛЬНЫЙ ЦЕНТР
-- Game zones for younger students
-- Interactive lessons
+8. **Value of Current Implementation:**
+   - Complete Anchor program architecture (ready for compilation)
+   - Working API layer and frontend (demonstrates UX)
+   - Clear migration path from database to on-chain
+   - Foundation for decentralized reputation system
+   - Enables external dApp integrations via API
 
-## Tech Stack
-- **Frontend**: Preact (through React compat layer) + Vite
-- **Styling**: Tailwind CSS + shadcn/ui components
-- **Backend**: Express.js + TypeScript
-- **AI Integration**: Google Gemini API
-- **Data Storage**: In-memory storage (MemStorage) - can be upgraded to PostgreSQL
-- **Internationalization**: i18next
-- **State Management**: TanStack Query (React Query v5)
+## Recent Changes (October 26, 2025)
 
-## Design System
-- **Theme**: Light blue (#E3F2FD, #BBDEFB) and white (#FFFFFF)
-- **Style**: Flat design with no gradients, clean and accessible
-- **Components**: shadcn/ui with custom light blue theme
-- **Icons**: Lucide React
+### Real NFT Minting Enabled
+**NFT certificates are now real and stored on Solana blockchain:**
+1. **METAPLEX_PRIVATE_KEY** - Configured minting wallet (6HedLGSwpz7oqvYqFQ3kiG1pKregGtdjXsQrt21NLsUe)
+2. **Real blockchain storage** - NFTs are minted on Solana Devnet and appear in user wallets
+3. **Wallet generation script** - Added `npm run generate-wallet` for easy keypair creation
+4. **Impact:** Users now receive genuine NFT certificates visible in Phantom and other Solana wallets
 
-## Architecture
+### SkillPool Feature Page Added
+**New page displaying platform's reward pool mechanics (prototype/mockup):**
+1. **Revenue streams** - Shows income from failed tests (45%), ads (30%), partnerships (15%), other (10%)
+2. **Reward distribution** - Displays payout percentages: Senior 15%, Middle 12%, Junior 10%
+3. **Pool statistics** - Mock data showing balance, monthly revenue/rewards, active users
+4. **Navigation integration** - Added to header with Coins icon
+5. **Impact:** Users can see how the platform economics work (currently demo data)
 
-### Frontend Structure
-```
-client/src/
-├── components/          # Reusable UI components
-│   ├── AssistantCharacter.tsx
-│   ├── QuizInterface.tsx
-│   ├── ClubCard.tsx
-│   ├── RegistrationForm.tsx
-│   ├── GoogleMapsEmbed.tsx
-│   ├── MenuNavigation.tsx
-│   ├── Header.tsx
-│   ├── LanguageSwitcher.tsx
-│   └── ui/             # shadcn components
-├── pages/              # Route pages
-│   ├── Home.tsx
-│   ├── Clubs.tsx
-│   ├── ClubDetails.tsx
-│   ├── Quiz.tsx
-│   ├── Schedule.tsx
-│   ├── Rules.tsx
-│   ├── Behavior.tsx
-│   ├── Contacts.tsx
-│   └── Settings.tsx
-├── lib/
-│   ├── i18n.ts         # Internationalization configuration
-│   └── queryClient.ts  # TanStack Query setup
-└── App.tsx             # Main app with routing
-```
+### Docker Support Added
+**Added complete Docker deployment configuration:**
+1. **Dockerfile** - Multi-stage build for production-ready deployment
+2. **docker-compose.yml** - One-command setup with PostgreSQL database included
+3. **.dockerignore** - Optimized build context
+4. **.env.example** - Template for environment variables
+5. **DEPLOYMENT.md** - Complete deployment instructions in Russian and Docker commands
+6. **Impact:** Application can now be deployed on any machine with Docker, not just Replit
 
-### Backend Structure
-```
-server/
-├── index.ts            # Express server entry point
-├── routes.ts           # API endpoints
-├── gemini.ts           # Gemini AI integration
-├── storage.ts          # In-memory data storage
-└── vite.ts            # Vite integration
-```
+### Database Error Handling Improvements
+**Fixed Multiple Critical Bugs:**
+1. **"Invalid time value" Error** - Added comprehensive date validation with try/catch blocks for database timestamp fields (createdAt, earnedAt)
+2. **"Cannot read properties of null (reading 'map')" Error** - Wrapped all database queries in try/catch blocks to handle null results from Neon HTTP driver
+3. **Race Conditions** - Added error handling for INSERT operations when creating new user stats records
+4. **Files Changed:** `server/storage.ts` - Enhanced `getTest()`, `getUserStats()` methods with robust error handling
+5. **Impact:** Eliminated all database-related crashes, app now handles edge cases gracefully
 
-### Shared
-```
-shared/
-└── schema.ts           # TypeScript types and Zod schemas
-```
+## User Preferences
+Preferred communication style: Simple, everyday language.
 
-## API Endpoints
+## System Architecture
 
-### Clubs
-- `GET /api/clubs` - Get all clubs
-- `GET /api/clubs/:id` - Get club details
+### Frontend Architecture
+The frontend uses React 18 with TypeScript, Vite for bundling, and Wouter for routing. UI is built with `shadcn/ui` (New York style) using Radix UI primitives and Tailwind CSS for styling, supporting light/dark mode. State management relies on TanStack Query for server state and local React state for UI. Solana integration uses `@solana/wallet-adapter-react` and `@solana/web3.js` for Devnet interactions. Key design patterns include component composition, custom hooks, and path aliases.
 
-### Chat (NEW!)
-- `POST /api/chat` - Chat with AI assistant about Digitalurpaq
+### Backend Architecture
+The backend is built with Node.js and Express.js, entirely in TypeScript. It provides RESTful API endpoints, utilizing Zod schemas (`shared/schema.ts`) for shared request/response validation. Payment verification occurs via on-chain transaction validation, and replay attacks are prevented using signature tracking. AI integration uses Google Gemini (gemini-2.5-flash) for generating structured JSON test questions. NFT features include Metaplex SDK integration for minting certificates with enhanced metadata. **New:** Anchor program integration for on-chain reputation system, skill verification API for dApp integrations, and DAO statistics endpoints.
 
-### Quiz
-- `POST /api/quiz/generate` - Generate AI quiz questions
-- `POST /api/quiz/recommendations` - Get club recommendations based on interests
+### Data Storage
+The application uses PostgreSQL with Drizzle ORM for persistent storage. The database schema defines tables for tests, test results, certificates, and user statistics. Payment signatures are tracked to prevent replay attacks. Data models include `Test`, `Question`, `TestResult`, `Certificate`, and `UserStats`.
 
-### Registration
-- `POST /api/registrations` - Create new registration
-- `GET /api/registrations` - Get all registrations
+### Key Features and Implementations
+- **AI-Powered Test Generation:** Dynamic, multi-level category selection (10 main, 15 sub, 20 specific skills) for test generation using Gemini AI. Tests consist of 10 questions, each worth 10 points (total 100).
+- **Scoring and Rewards:** A new scoring system awards Senior (90-100 pts, 15% SOL reward), Middle (80-89 pts, 12% SOL reward), and Junior (70-79 pts, 10% SOL reward) levels. Scores below 70 fail.
+- **Real NFT Certificate Minting:** NFTs are minted on Solana Devnet blockchain using Metaplex SDK with real keypair. Enhanced metadata with 10 attributes and dynamic image generation using DiceBear API. NFTs appear in users' Phantom wallets.
+- **On-Chain Reputation System (Architecture):** Anchor program implementation with UserProfile PDAs, SkillRegistry, Validator system, and on-chain skill scores. Currently uses database simulation, ready for on-chain deployment.
+- **SkillDAO Governance (Architecture):** Validator-based approval system, escrow payment distribution (DAO 50%, Project 40%, Rewards 10%), and SKILL token foundation for Skill-to-Earn economy. Smart contract implemented, requires deployment.
+- **dApp Integration API:** RESTful endpoints for external applications to verify user skills, enabling use cases like "Developer DAO - Rust experts only" or job platforms requiring verified skills. Currently simulated via database, will transition to on-chain data post-deployment.
+- **SkillPool Dashboard:** Prototype page showing platform economics - revenue streams (failed tests, ads, partnerships) and reward distribution mechanisms. Currently displays demo data.
+- **Payment Verification:** On-chain payment verification using Solana transactions ensures secure test generation and prevents backend exploitation.
+- **Robust Error Handling:** Comprehensive date validation and retry logic for fetching tests from the database.
 
-### Schedule
-- `GET /api/schedule` - Get user's schedule with all active registrations
+## External Dependencies
 
-### Reminders
-- `GET /api/reminders/pending` - Get pending reminders
-- `POST /api/reminders/:id/sent` - Mark reminder as sent
+### Blockchain Services
+- **Solana Devnet:** RPC endpoints for development and testing.
+- **Metaplex Protocol:** For NFT minting and metadata standards.
 
-## Environment Variables
-- `GEMINI_API_KEY` - Google Gemini API key (required for AI quiz features)
-- `DATABASE_URL` - PostgreSQL connection string (available for future database migration)
-- `NODE_ENV` - Environment (development/production)
+### AI Services
+- **Google Gemini API:** `gemini-2.5-flash` model for generating AI test questions. Requires `GEMINI_API_KEY`.
 
-## Data Models
+### Database
+- **PostgreSQL:** Primary data store, managed by Drizzle ORM.
+- **Neon Database:** Serverless driver for PostgreSQL.
 
-### Club
-- id, name, nameKz, nameRu
-- description, descriptionKz, descriptionRu
-- category, ageGroup, skillLevel
-- schedule (JSON), maxCapacity, currentEnrollment
-- location, imageUrl
+### Third-Party Libraries
+- **@coral-xyz/anchor:** Framework for Solana program development and client integration
+- **@solana/wallet-adapter-react, @solana/wallet-adapter-phantom, @solana/web3.js:** For Solana wallet integration and blockchain interactions.
+- **@solana/spl-token:** For SPL token operations (SKILL token)
+- **Radix UI primitives:** For accessible UI components.
+- **bs58:** For Base58 encoding/decoding.
+- **nanoid:** For generating unique IDs.
+- **class-variance-authority, tailwind-merge:** For styling utilities.
+- **Zod:** For schema validation.
 
-### Registration
-- id, studentName, studentAge, parentContact
-- clubId, registeredAt, status
+### Development Tools
+- **Vite:** Build tool and development server.
+- **esbuild:** For server-side bundling.
+- **TypeScript:** For type checking.
 
-### Quiz Response
-- id, sessionId, interests (JSON), recommendations (JSON)
-- createdAt
+## Deployment
 
-### Reminder
-- id, registrationId, activityDate, reminderSent, message
+### Docker Deployment
+The application includes complete Docker support for deployment on any machine. See `DEPLOYMENT.md` for detailed instructions.
 
-## Internationalization
-All UI text is fully translated into three languages:
-- English (en)
-- Kazakh (kz) - Қазақ тілі
-- Russian (ru) - Русский (default for Petropavlovsk)
-
-Translation keys are organized by feature/component in `client/src/lib/i18n.ts`.
-
-## Development
-
-### Running the Project
+**Quick start with Docker Compose:**
 ```bash
-npm run dev
+# Copy environment template
+cp .env.example .env
+
+# Edit .env and add your GEMINI_API_KEY and DB_PASSWORD
+
+# Start application with database
+docker-compose up -d
+
+# Application will be available at http://localhost:5000
 ```
-This starts both the Express backend (port 5000) and Vite frontend dev server.
 
-### Database Setup (Optional)
-The project currently uses in-memory storage. To enable PostgreSQL:
-```bash
-npm run db:push
-```
+**Files:**
+- `Dockerfile` - Multi-stage production build
+- `docker-compose.yml` - Complete stack with PostgreSQL
+- `.env.example` - Environment variables template
+- `DEPLOYMENT.md` - Full deployment guide
 
-### Available Clubs
-The application includes actual clubs from Дворец школьников "Digital Urpaq":
-- **IT & Technology**: Robotics & LEGO, 3D Prototyping, Programming & Web Dev, Mechatronics, Drone Assembly, SDR Radio
-- **Science**: Biotechnology Lab, Hydroponics - Green Business, Ecology & Environmental Science
-- **Arts**: Art School, Decorative & Applied Arts, Choreography
-- **Media**: Media Journalism, Video Production, Photography, Blogging
-- **Business**: Business School, Financial Literacy
-- **Languages & Culture**: Debate Club, KVN Club
-- **Entertainment**: Entertainment Center for younger students
-
-## User Workflows
-
-### 1. Discovering Clubs
-1. User lands on home page with animated assistant
-2. Can browse all clubs or take interest quiz
-3. Search and filter clubs by category
-4. View detailed club information
-
-### 2. Taking Interest Quiz
-1. Click "Take Quiz" on home page
-2. AI generates personalized questions in user's language
-3. Answer questions about interests and preferences
-4. Receive club recommendations with match percentages
-5. Register directly from recommendations
-
-### 3. Registration
-1. Select a club
-2. Fill registration form (student info, parent contact)
-3. Confirm registration
-4. Automatically added to schedule
-
-### 4. Managing Schedule
-1. View calendar with all registered activities
-2. Receive 30-minute advance reminders
-3. See club details, location
-4. Track enrollment status
-
-## Security & Best Practices
-- No API keys exposed in client code
-- Input validation with Zod schemas
-- Type-safe API with TypeScript
-- Proper error handling and loading states
-- Environment variables for sensitive data
-
-## Recent Changes (October 2025)
-- Project adapted for Дворец школьников "Digital Urpaq" Petropavlovsk
-- **NEW**: Added full AI chat feature with topic-focused conversation
-- **NEW**: Chat assistant only discusses Digital Urpaq-related topics
-- **NEW**: Added animated assistant character with interactive emotions
-- **UPDATED**: Location to correct address (V438+J5W, ул. Таштинова, Петропавловск 150000)
-- **UPDATED**: Google Maps integration with correct coordinates (54.8537°N, 69.1458°E)
-- **FIXED**: Chat message duplication issue and error handling
-- **UPDATED**: All club data with actual programs from Digital Urpaq
-- **UPDATED**: Contact information (Приемная: +7 (7152) 34-02-40, Ресепшн: +7 (7152) 50-17-03)
-- Added all 7 main directions of education
-- Over 20 actual clubs from Digital Urpaq programs
-- Configured for Replit environment with proper host settings
-- Set up Google Gemini API integration
-- Configured Vite dev server to allow all hosts for iframe proxy
-- Installed all npm dependencies
-
-## Known Limitations
-- Uses ReactDOM.render (React 17 API) through Preact compat - shows deprecation warning but works correctly
-- In-memory storage - data resets on server restart (can be upgraded to PostgreSQL)
-- Sample club data - needs to be populated with actual Petropavlovsk programs
-
-## Future Enhancements
-- Migrate to persistent PostgreSQL database
-- Populate real club data from Petropavlovsk Palace
-- User authentication system
-- Admin dashboard for club management
-- Email/SMS notifications for reminders
-- Photo gallery for clubs
-- Student progress tracking
-- Certificate generation
-- Integration with official website https://digitalurpaq.edu.kz
-- Virtual 3D tour integration
+### Replit Deployment
+The application is configured to run in Replit with the following setup:
+- **Workflow:** `npm run dev` on port 5000
+- **Database:** Replit PostgreSQL (auto-provisioned)
+- **Secrets:** 
+  - `GEMINI_API_KEY` - Google Gemini API for test generation
+  - `METAPLEX_PRIVATE_KEY` - Solana wallet for NFT minting (Base58 format)
+- **Helper Scripts:**
+  - `npm run generate-wallet` - Generate new Solana keypair for NFT minting

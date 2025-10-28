@@ -1,101 +1,119 @@
-import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp, integer, boolean } from "drizzle-orm/pg-core";
-import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-// Clubs - after-school activities/circles
-export const clubs = pgTable("clubs", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  name: text("name").notNull(),
-  nameKz: text("name_kz"),
-  nameRu: text("name_ru"),
-  description: text("description").notNull(),
-  descriptionKz: text("description_kz"),
-  descriptionRu: text("description_ru"),
-  category: text("category").notNull(), // sports, arts, science, music, tech, etc.
-  ageGroup: text("age_group").notNull(), // "7-10", "11-14", "15-18"
-  skillLevel: text("skill_level").notNull(), // beginner, intermediate, advanced
-  schedule: text("schedule").notNull(), // JSON string: [{day: "Mon", time: "15:00", duration: 60}]
-  maxCapacity: integer("max_capacity").notNull(),
-  currentEnrollment: integer("current_enrollment").notNull().default(0),
-  location: text("location").notNull(), // Room number or building
-  imageUrl: text("image_url"),
+// Test Question Schema - 10 questions, 10 points each
+export const questionSchema = z.object({
+  id: z.string(),
+  question: z.string(),
+  options: z.array(z.string()).length(4),
+  correctAnswer: z.number().min(0).max(3),
+  points: z.number().default(10), // Each question worth 10 points
 });
 
-// Registrations - student enrollments in clubs
-export const registrations = pgTable("registrations", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  studentName: text("student_name").notNull(),
-  studentAge: integer("student_age").notNull(),
-  parentContact: text("parent_contact").notNull(),
-  clubId: varchar("club_id").notNull(),
-  registeredAt: timestamp("registered_at").notNull().default(sql`now()`),
-  status: text("status").notNull().default("active"), // active, cancelled, completed
+export type Question = z.infer<typeof questionSchema>;
+
+// Category Schema
+export const categorySchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  level: z.number(), // 1 = main, 2 = narrow, 3 = specific
 });
 
-// Reminders - scheduled notifications for upcoming activities
-export const reminders = pgTable("reminders", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  registrationId: varchar("registration_id").notNull(),
-  activityDate: timestamp("activity_date").notNull(),
-  reminderSent: boolean("reminder_sent").notNull().default(false),
-  message: text("message").notNull(),
+export type Category = z.infer<typeof categorySchema>;
+
+// Test Schema - now with categories
+export const testSchema = z.object({
+  id: z.string(),
+  topic: z.string(),
+  mainCategory: z.string(),
+  narrowCategory: z.string(),
+  specificCategory: z.string(),
+  questions: z.array(questionSchema).length(10), // Always 10 questions
+  createdAt: z.string(),
 });
 
-// Quiz responses - track student interests
-export const quizResponses = pgTable("quiz_responses", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  sessionId: varchar("session_id").notNull(),
-  interests: text("interests").notNull(), // JSON array of interest tags
-  recommendations: text("recommendations").notNull(), // JSON array of club IDs
-  createdAt: timestamp("created_at").notNull().default(sql`now()`),
+export type Test = z.infer<typeof testSchema>;
+
+// Test Submission Schema
+export const testSubmissionSchema = z.object({
+  testId: z.string(),
+  walletAddress: z.string(),
+  answers: z.array(z.number()),
 });
 
-// Zod schemas for validation
-export const insertClubSchema = createInsertSchema(clubs).omit({
-  id: true,
-  currentEnrollment: true,
+export type TestSubmission = z.infer<typeof testSubmissionSchema>;
+
+// Test Result Schema - updated for 100 point scale
+export const testResultSchema = z.object({
+  testId: z.string(),
+  walletAddress: z.string(),
+  topic: z.string(),
+  score: z.number().min(0).max(100), // 0-100 points
+  level: z.enum(["Junior", "Middle", "Senior", "Failed"]), // Failed if < 70
+  correctAnswers: z.number(),
+  totalQuestions: z.number().default(10),
+  totalPoints: z.number().default(100),
+  solReward: z.number(),
+  completedAt: z.string(),
+  passed: z.boolean(), // true if score >= 70
 });
 
-export const insertRegistrationSchema = createInsertSchema(registrations).omit({
-  id: true,
-  registeredAt: true,
-  status: true,
+export type TestResult = z.infer<typeof testResultSchema>;
+
+// Certificate/NFT Schema
+export const certificateSchema = z.object({
+  id: z.string(),
+  walletAddress: z.string(),
+  topic: z.string(),
+  level: z.enum(["Junior", "Middle", "Senior"]),
+  score: z.number(),
+  nftMint: z.string().optional(),
+  nftMetadataUri: z.string().optional(),
+  earnedAt: z.string(),
 });
 
-export const insertReminderSchema = createInsertSchema(reminders).omit({
-  id: true,
-  reminderSent: true,
+export type Certificate = z.infer<typeof certificateSchema>;
+
+// User Stats Schema
+export const userStatsSchema = z.object({
+  walletAddress: z.string(),
+  totalTests: z.number(),
+  totalCertificates: z.number(),
+  successRate: z.number(),
+  totalSolEarned: z.number(),
+  certificates: z.array(certificateSchema),
 });
 
-export const insertQuizResponseSchema = createInsertSchema(quizResponses).omit({
-  id: true,
-  createdAt: true,
+export type UserStats = z.infer<typeof userStatsSchema>;
+
+// Category Request/Response Schemas
+export const getCategoriesRequestSchema = z.object({
+  level: z.number().min(1).max(3), // 1 = main, 2 = narrow, 3 = specific
+  parentCategory: z.string().optional(), // Required for level 2 and 3
 });
 
-// Quiz request schema for AI generation
-export const quizRequestSchema = z.object({
-  language: z.enum(["en", "kz", "ru"]),
+export type GetCategoriesRequest = z.infer<typeof getCategoriesRequestSchema>;
+
+export const getCategoriesResponseSchema = z.object({
+  categories: z.array(categorySchema),
 });
 
-export const quizAnswerSchema = z.object({
-  questionIndex: z.number(),
-  answer: z.string(),
-  interests: z.array(z.string()),
+export type GetCategoriesResponse = z.infer<typeof getCategoriesResponseSchema>;
+
+// API Request/Response Schemas
+export const generateTestRequestSchema = z.object({
+  mainCategory: z.string().min(1, "Main category is required"),
+  narrowCategory: z.string().min(1, "Narrow category is required"),
+  specificCategory: z.string().min(1, "Specific category is required"),
+  walletAddress: z.string(),
+  paymentSignature: z.string().min(1, "Payment signature required"), // Transaction signature for backend verification
 });
 
-// Types
-export type Club = typeof clubs.$inferSelect;
-export type InsertClub = z.infer<typeof insertClubSchema>;
+export type GenerateTestRequest = z.infer<typeof generateTestRequestSchema>;
 
-export type Registration = typeof registrations.$inferSelect;
-export type InsertRegistration = z.infer<typeof insertRegistrationSchema>;
+export const generateTestResponseSchema = z.object({
+  test: testSchema,
+  paymentRequired: z.boolean(),
+  amount: z.number(),
+});
 
-export type Reminder = typeof reminders.$inferSelect;
-export type InsertReminder = z.infer<typeof insertReminderSchema>;
-
-export type QuizResponse = typeof quizResponses.$inferSelect;
-export type InsertQuizResponse = z.infer<typeof insertQuizResponseSchema>;
-
-export type QuizRequest = z.infer<typeof quizRequestSchema>;
-export type QuizAnswer = z.infer<typeof quizAnswerSchema>;
+export type GenerateTestResponse = z.infer<typeof generateTestResponseSchema>;
