@@ -165,7 +165,16 @@ export class MemStorage implements IStorage {
 
     sampleClubs.forEach(club => {
       const id = randomUUID();
-      this.clubs.set(id, { ...club, id, currentEnrollment: 0 });
+      this.clubs.set(id, { 
+        ...club, 
+        id, 
+        currentEnrollment: 0,
+        nameKz: club.nameKz ?? null,
+        nameRu: club.nameRu ?? null,
+        descriptionKz: club.descriptionKz ?? null,
+        descriptionRu: club.descriptionRu ?? null,
+        imageUrl: club.imageUrl ?? null
+      });
     });
   }
 
@@ -180,7 +189,16 @@ export class MemStorage implements IStorage {
 
   async createClub(insertClub: InsertClub): Promise<Club> {
     const id = randomUUID();
-    const club: Club = { ...insertClub, id, currentEnrollment: 0 };
+    const club: Club = { 
+      ...insertClub, 
+      id, 
+      currentEnrollment: 0,
+      nameKz: insertClub.nameKz ?? null,
+      nameRu: insertClub.nameRu ?? null,
+      descriptionKz: insertClub.descriptionKz ?? null,
+      descriptionRu: insertClub.descriptionRu ?? null,
+      imageUrl: insertClub.imageUrl ?? null
+    };
     this.clubs.set(id, club);
     return club;
   }

@@ -135,10 +135,10 @@ const resources = {
       contactEmail: "Email",
       contactAddress: "Address",
       contactHours: "Working Hours",
-      contactPhoneValue: "+7 (727) 123-4567",
-      contactEmailValue: "info@palaceschool.kz",
-      contactAddressValue: "Palace of Schoolchildren, Almaty, Kazakhstan",
-      contactHoursValue: "Monday - Saturday: 9:00 AM - 8:00 PM",
+      contactPhoneValue: "Reception: 8 7152 34-02-40, Front Desk: 8 7152 50-17-03",
+      contactEmailValue: "dvorecsko@sqo.gov.kz",
+      contactAddressValue: "150000, Petropavlovsk, Zhambyla Zhabaeva street, 55 A",
+      contactHoursValue: "Mon-Fri: 09:00-20:10 (break 12:00-15:00), Sat-Sun: 9:00-18:00",
       
       // Settings
       settingsSubtitle: "Choose your preferred language",
@@ -279,10 +279,10 @@ const resources = {
       contactEmail: "Электрондық пошта",
       contactAddress: "Мекенжай",
       contactHours: "Жұмыс уақыты",
-      contactPhoneValue: "+7 (727) 123-4567",
-      contactEmailValue: "info@palaceschool.kz",
-      contactAddressValue: "Оқушылар сарайы, Алматы, Қазақстан",
-      contactHoursValue: "Дүйсенбі - Сенбі: 9:00 - 20:00",
+      contactPhoneValue: "Қабылдау: 8 7152 34-02-40, Ресепшн: 8 7152 50-17-03",
+      contactEmailValue: "dvorecsko@sqo.gov.kz",
+      contactAddressValue: "150000, Петропавл қаласы, Жамбыл Жабаев көшесі, 55 А",
+      contactHoursValue: "Дс-Жм: 09:00-20:10 (үзіліс 12:00-15:00), Сб-Жс: 9:00-18:00",
       
       // Settings
       settingsSubtitle: "Өзіңіз үшін ыңғайлы тілді таңдаңыз",
@@ -423,10 +423,10 @@ const resources = {
       contactEmail: "Email",
       contactAddress: "Адрес",
       contactHours: "Часы работы",
-      contactPhoneValue: "+7 (727) 123-4567",
-      contactEmailValue: "info@palaceschool.kz",
-      contactAddressValue: "Дворец школьников, Алматы, Казахстан",
-      contactHoursValue: "Понедельник - Суббота: 9:00 - 20:00",
+      contactPhoneValue: "Приемная: 8 7152 34-02-40, Ресепшн: 8 7152 50-17-03",
+      contactEmailValue: "dvorecsko@sqo.gov.kz",
+      contactAddressValue: "150000, город Петропавловск, улица Жамбыла Жабаева, 55 А",
+      contactHoursValue: "Пн-Пт: 09:00-20:10 (перерыв 12:00-15:00), Сб-Вс: 9:00-18:00",
       
       // Settings
       settingsSubtitle: "Выберите предпочитаемый язык",

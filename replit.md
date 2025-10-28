@@ -1,7 +1,16 @@
-# Palace of Schoolchildren Interactive Assistant
+# Palace of Schoolchildren Interactive Assistant - Petropavlovsk
 
 ## Project Overview
-An interactive web application for the Palace of Schoolchildren in Almaty, Kazakhstan. Features an animated AI assistant character that helps students discover clubs, take interest quizzes, register for activities, and navigate the facility.
+An interactive web application for the Palace of Schoolchildren (Дворец школьников) in Petropavlovsk, Kazakhstan. Features an animated AI assistant character that helps students discover clubs, take interest quizzes, register for activities, and navigate the facility.
+
+## Facility Information
+- **Location**: Petropavlovsk, Kazakhstan
+- **Address**: 150000, город Петропавловск, улица Жамбыла Жабаева, 55 А
+- **Phone**: Reception: 8 7152 34-02-40, Front Desk: 8 7152 50-17-03
+- **Email**: dvorecsko@sqo.gov.kz
+- **Working Hours**: Mon-Fri: 09:00-20:10 (break 12:00-15:00), Sat-Sun: 9:00-18:00
+- **Description**: One of the largest institutions of additional education in Petropavlovsk with over 90 clubs across three main directions, 80 of which are FREE
+- **Facilities**: 15 laboratories equipped with modern high-tech equipment
 
 ## Key Features
 1. **Animated Assistant Character** - Friendly mascot with idle animations and motivational speech bubbles
@@ -13,12 +22,38 @@ An interactive web application for the Palace of Schoolchildren in Almaty, Kazak
 7. **Google Maps Integration** - Virtual tours and directions to the facility
 8. **Responsive Design** - Works on desktop, tablet, and mobile devices
 
+## Three Main Directions
+
+### 1. Scientific-Biological Direction (Научно-биологическое направление)
+- Laboratory of Modern Biotechnology
+- Biology Cabinet
+- Chemistry Cabinet
+- Hydroponics Cabinet
+
+### 2. IT Direction (IT - Информационные технологии)
+- Industrial Internet of Things Laboratory
+- Control and Measurement Systems Programming Laboratory
+- 3D Prototyping Cabinet
+- Holography Cabinet
+
+### 3. Artistic-Aesthetic Direction (Художественно-эстетическое направление)
+- Theater clubs
+- Dombra clubs
+- Choreographic clubs
+- Journalism and Media Technology club
+
+## Additional Programs
+- Art School
+- Business School
+- Journalism and Media Technologies
+- Debate Club and KVN
+
 ## Tech Stack
 - **Frontend**: Preact (through React compat layer) + Vite
 - **Styling**: Tailwind CSS + shadcn/ui components
 - **Backend**: Express.js + TypeScript
 - **AI Integration**: Google Gemini API
-- **Data Storage**: In-memory storage (MemStorage)
+- **Data Storage**: In-memory storage (MemStorage) - can be upgraded to PostgreSQL
 - **Internationalization**: i18next
 - **State Management**: TanStack Query (React Query v5)
 
@@ -80,7 +115,6 @@ shared/
 ### Clubs
 - `GET /api/clubs` - Get all clubs
 - `GET /api/clubs/:id` - Get club details
-- `GET /api/clubs/category/:category` - Get clubs by category
 
 ### Quiz
 - `POST /api/quiz/generate` - Generate AI quiz questions
@@ -89,41 +123,44 @@ shared/
 ### Registration
 - `POST /api/registrations` - Create new registration
 - `GET /api/registrations` - Get all registrations
-- `DELETE /api/registrations/:id` - Cancel registration
+
+### Schedule
+- `GET /api/schedule` - Get user's schedule with all active registrations
 
 ### Reminders
-- `GET /api/reminders` - Get upcoming reminders
-- `PATCH /api/reminders/:id` - Mark reminder as read
+- `GET /api/reminders/pending` - Get pending reminders
+- `POST /api/reminders/:id/sent` - Mark reminder as sent
 
 ## Environment Variables
-- `GEMINI_API_KEY` - Google Gemini API key (required)
-- `SESSION_SECRET` - Express session secret (required)
+- `GEMINI_API_KEY` - Google Gemini API key (required for AI quiz features)
+- `DATABASE_URL` - PostgreSQL connection string (available for future database migration)
 - `NODE_ENV` - Environment (development/production)
 
 ## Data Models
 
 ### Club
-- id, name, description, category
-- instructor, schedule, capacity
-- ageRange, duration, location
-- imageUrl
+- id, name, nameKz, nameRu
+- description, descriptionKz, descriptionRu
+- category, ageGroup, skillLevel
+- schedule (JSON), maxCapacity, currentEnrollment
+- location, imageUrl
 
 ### Registration
 - id, studentName, studentAge, parentContact
-- clubId, timeSlot, status, registrationDate
+- clubId, registeredAt, status
 
-### Quiz
-- questions, options, interests mapping
+### Quiz Response
+- id, sessionId, interests (JSON), recommendations (JSON)
+- createdAt
 
 ### Reminder
-- id, registrationId, clubName, scheduledTime
-- reminderTime, read
+- id, registrationId, activityDate, reminderSent, message
 
 ## Internationalization
 All UI text is fully translated into three languages:
-- English (en) - Default
-- Kazakh (kz)
-- Russian (ru)
+- English (en)
+- Kazakh (kz) - Қазақ тілі
+- Russian (ru) - Русский (default for Petropavlovsk)
 
 Translation keys are organized by feature/component in `client/src/lib/i18n.ts`.
 
@@ -135,16 +172,18 @@ npm run dev
 ```
 This starts both the Express backend (port 5000) and Vite frontend dev server.
 
+### Database Setup (Optional)
+The project currently uses in-memory storage. To enable PostgreSQL:
+```bash
+npm run db:push
+```
+
 ### Sample Data
-The application includes sample clubs across multiple categories:
-- Sports: Basketball Club, Swimming Academy
-- Arts: Digital Art Studio, Photography Club
-- Science: Robotics Lab, Chemistry Club  
-- Music: Piano Lessons, Guitar Workshop
-- Technology: Coding Academy, Web Development
-- Languages: English Speaking Club
-- Dance: Modern Dance, Ballet School
-- Theater: Drama Workshop
+The application includes sample clubs across multiple categories aligned with Petropavlovsk Palace programs:
+- IT & Technology: Robotics Lab, Programming, 3D Prototyping
+- Science: Biotechnology, Chemistry, Biology
+- Arts: Theater, Choreography, Dombra, Journalism
+- And more...
 
 ## User Workflows
 
@@ -164,44 +203,44 @@ The application includes sample clubs across multiple categories:
 ### 3. Registration
 1. Select a club
 2. Fill registration form (student info, parent contact)
-3. Choose time slot
-4. Confirm registration
-5. Automatically added to schedule
+3. Confirm registration
+4. Automatically added to schedule
 
 ### 4. Managing Schedule
 1. View calendar with all registered activities
 2. Receive 30-minute advance reminders
-3. See club details, instructor, location
-4. Cancel registrations if needed
+3. See club details, location
+4. Track enrollment status
 
 ## Security & Best Practices
 - No API keys exposed in client code
-- Google Maps links used instead of embedded maps
-- Session management with secure secrets
 - Input validation with Zod schemas
 - Type-safe API with TypeScript
 - Proper error handling and loading states
+- Environment variables for sensitive data
 
-## Recent Changes
-- Fixed Preact/React compatibility issues
-- Removed hard-coded Google Maps API key from client
-- Internationalized all content pages (Rules, Behavior, Contacts, Settings)
-- Added complete translations for all three languages
-- Implemented in-memory storage with sample data
-- Integrated Gemini AI for quiz generation and recommendations
-- Created animated assistant character with speech bubbles
-- Built responsive design with light blue-white theme
+## Recent Changes (October 2025)
+- Project adapted for Petropavlovsk Palace of Schoolchildren
+- Updated contact information and location details
+- Added Petropavlovsk-specific club categories
+- Configured for Replit environment
+- Set up Google Gemini API integration
+- Configured Vite dev server with proper host settings
+- Installed all npm dependencies
 
 ## Known Limitations
 - Uses ReactDOM.render (React 17 API) through Preact compat - shows deprecation warning but works correctly
-- In-memory storage - data resets on server restart
-- Google Maps integration uses direct links (no embedded maps)
+- In-memory storage - data resets on server restart (can be upgraded to PostgreSQL)
+- Sample club data - needs to be populated with actual Petropavlovsk programs
 
 ## Future Enhancements
-- Persistent database (PostgreSQL)
-- User authentication
+- Migrate to persistent PostgreSQL database
+- Populate real club data from Petropavlovsk Palace
+- User authentication system
 - Admin dashboard for club management
-- Email notifications for reminders
+- Email/SMS notifications for reminders
 - Photo gallery for clubs
 - Student progress tracking
 - Certificate generation
+- Integration with official website https://digitalurpaq.edu.kz
+- Virtual 3D tour integration

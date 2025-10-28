@@ -103,7 +103,7 @@ export default function Quiz() {
     );
   }
   
-  if (quizStarted && quizQuestions.length > 0) {
+  if (quizStarted && quizQuestions && quizQuestions.length > 0) {
     return (
       <div className="min-h-screen bg-background py-8">
         <div className="max-w-7xl mx-auto px-4">
