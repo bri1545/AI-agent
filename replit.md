@@ -1,11 +1,14 @@
-# Palace of Schoolchildren Interactive Assistant - Petropavlovsk
+# Digitalurpaq Interactive Assistant - Petropavlovsk
 
 ## Project Overview
-An interactive web application for the Palace of Schoolchildren (Дворец школьников) in Petropavlovsk, Kazakhstan. Features an animated AI assistant character that helps students discover clubs, take interest quizzes, register for activities, and navigate the facility.
+An interactive web application for Digitalurpaq (Цифровой Урпақ) in Petropavlovsk, Kazakhstan. Features an AI-powered assistant that helps students discover clubs, take interest quizzes, chat with AI about programs, register for activities, and navigate the facility.
 
 ## Facility Information
+- **Name**: Digitalurpaq ПЕТРОПАВЛОВСК
+- **Website**: https://digitalurpaq.edu.kz/ru/index.htm
 - **Location**: Petropavlovsk, Kazakhstan
-- **Address**: 150000, город Петропавловск, улица Жамбыла Жабаева, 55 А
+- **Address**: ул. Таштинова, Петропавловск 150000 (Plus Code: V438+J5W)
+- **Coordinates**: 54.8536°N, 69.1158°E
 - **Phone**: Reception: 8 7152 34-02-40, Front Desk: 8 7152 50-17-03
 - **Email**: dvorecsko@sqo.gov.kz
 - **Working Hours**: Mon-Fri: 09:00-20:10 (break 12:00-15:00), Sat-Sun: 9:00-18:00
@@ -13,14 +16,15 @@ An interactive web application for the Palace of Schoolchildren (Дворец ш
 - **Facilities**: 15 laboratories equipped with modern high-tech equipment
 
 ## Key Features
-1. **Animated Assistant Character** - Friendly mascot with idle animations and motivational speech bubbles
-2. **Multi-Language Support** - Full internationalization in English, Kazakh, and Russian
-3. **AI-Powered Interest Quiz** - Uses Gemini AI to generate personalized club recommendations
-4. **Club Discovery** - Browse and search clubs by category with detailed information
-5. **Registration System** - Register for clubs with scheduling and conflict detection
-6. **Interactive Schedule** - Calendar view with 30-minute advance reminders
-7. **Google Maps Integration** - Virtual tours and directions to the facility
-8. **Responsive Design** - Works on desktop, tablet, and mobile devices
+1. **AI Chat Assistant** - Full conversational AI chat focused on Digitalurpaq topics (NEW!)
+2. **Animated Assistant Character** - Friendly mascot with idle animations and motivational speech bubbles
+3. **Multi-Language Support** - Full internationalization in English, Kazakh, and Russian
+4. **AI-Powered Interest Quiz** - Uses Gemini AI to generate personalized club recommendations
+5. **Club Discovery** - Browse and search clubs by category with detailed information
+6. **Registration System** - Register for clubs with scheduling and conflict detection
+7. **Interactive Schedule** - Calendar view with 30-minute advance reminders
+8. **Google Maps Integration** - Virtual tours and directions to the facility (updated to new location)
+9. **Responsive Design** - Works on desktop, tablet, and mobile devices
 
 ## Three Main Directions
 
@@ -115,6 +119,9 @@ shared/
 ### Clubs
 - `GET /api/clubs` - Get all clubs
 - `GET /api/clubs/:id` - Get club details
+
+### Chat (NEW!)
+- `POST /api/chat` - Chat with AI assistant about Digitalurpaq
 
 ### Quiz
 - `POST /api/quiz/generate` - Generate AI quiz questions
@@ -220,9 +227,14 @@ The application includes sample clubs across multiple categories aligned with Pe
 - Environment variables for sensitive data
 
 ## Recent Changes (October 2025)
-- Project adapted for Petropavlovsk Palace of Schoolchildren
+- Project adapted for Digitalurpaq Petropavlovsk
+- **NEW**: Added full AI chat feature with topic-focused conversation
+- **NEW**: Chat assistant only discusses Digitalurpaq-related topics
+- Updated location to new address (ул. Таштинова, Петропавловск 150000)
+- Updated Google Maps integration with new coordinates
+- Updated website reference to https://digitalurpaq.edu.kz
 - Updated contact information and location details
-- Added Petropavlovsk-specific club categories
+- Added Digitalurpaq-specific club categories
 - Configured for Replit environment
 - Set up Google Gemini API integration
 - Configured Vite dev server with proper host settings

@@ -16,7 +16,7 @@ const resources = {
       about: "About",
       
       // Home page
-      welcome: "Welcome to Palace of Schoolchildren",
+      welcome: "Welcome to Digitalurpaq",
       findYourClub: "Find Your Perfect Club",
       exploreClubs: "Explore what interests you!",
       checkSchedule: "Check your schedule today!",
@@ -86,6 +86,12 @@ const resources = {
       reminder: "Reminder",
       startsIn30Min: "Starts in 30 minutes",
       viewDetails: "View Details",
+      
+      // Chat
+      chat: "AI Chat",
+      chatWithAssistant: "Chat with AI Assistant",
+      askAboutDigitalurpaq: "Ask me anything about Digitalurpaq",
+      typeYourMessage: "Type your message...",
       
       // Common
       loading: "Loading...",
@@ -160,7 +166,7 @@ const resources = {
       about: "Біз туралы",
       
       // Home page
-      welcome: "Оқушылар сарайына қош келдіңіз",
+      welcome: "Digitalurpaq-қа қош келдіңіз",
       findYourClub: "Өзіңізге ұнайтын үйірме табыңыз",
       exploreClubs: "Сізді қызықтыратын нәрселерді зерттеңіз!",
       checkSchedule: "Бүгінгі кестені қараңыз!",
@@ -230,6 +236,12 @@ const resources = {
       reminder: "Еске салу",
       startsIn30Min: "30 минуттан кейін басталады",
       viewDetails: "Толығырақ қарау",
+      
+      // Chat
+      chat: "AI Чат",
+      chatWithAssistant: "AI көмекшісімен сөйлесу",
+      askAboutDigitalurpaq: "Digitalurpaq туралы кез келген нәрсе сұраңыз",
+      typeYourMessage: "Хабарламаңызды теріңіз...",
       
       // Common
       loading: "Жүктелуде...",
@@ -304,7 +316,7 @@ const resources = {
       about: "О нас",
       
       // Home page
-      welcome: "Добро пожаловать во Дворец школьников",
+      welcome: "Добро пожаловать в Digitalurpaq",
       findYourClub: "Найдите свой идеальный кружок",
       exploreClubs: "Исследуйте то, что вас интересует!",
       checkSchedule: "Проверьте свое расписание сегодня!",
@@ -374,6 +386,12 @@ const resources = {
       reminder: "Напоминание",
       startsIn30Min: "Начинается через 30 минут",
       viewDetails: "Подробнее",
+      
+      // Chat
+      chat: "AI Чат",
+      chatWithAssistant: "Чат с AI помощником",
+      askAboutDigitalurpaq: "Спросите меня о Digitalurpaq",
+      typeYourMessage: "Введите ваше сообщение...",
       
       // Common
       loading: "Загрузка...",

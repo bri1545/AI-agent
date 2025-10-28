@@ -51,6 +51,10 @@ export default function Quiz() {
     onSuccess: (data) => {
       setRecommendations(data);
       setShowResults(true);
+    },
+    onError: (error: any) => {
+      console.error("Failed to get recommendations:", error);
+      alert(`Error getting recommendations: ${error.message || "Please try again"}`);
     }
   });
   
@@ -111,6 +115,14 @@ export default function Quiz() {
             questions={quizQuestions}
             onComplete={handleQuizComplete}
           />
+          {getRecommendationsMutation.isPending && (
+            <div className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50">
+              <div className="text-center py-12">
+                <div className="inline-block w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+                <p className="mt-4 text-lg text-muted-foreground">{t("loading")} {t("recommendedForYou")}...</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );

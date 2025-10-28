@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import Clubs from "@/pages/Clubs";
 import ClubDetails from "@/pages/ClubDetails";
 import Quiz from "@/pages/Quiz";
+import Chat from "@/pages/Chat";
 import Schedule from "@/pages/Schedule";
 import Rules from "@/pages/Rules";
 import Behavior from "@/pages/Behavior";
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/clubs" component={Clubs} />
       <Route path="/clubs/:id" component={ClubDetails} />
       <Route path="/quiz" component={Quiz} />
+      <Route path="/chat" component={Chat} />
       <Route path="/schedule" component={Schedule} />
       <Route path="/rules" component={Rules} />
       <Route path="/behavior" component={Behavior} />

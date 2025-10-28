@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { generateInterestQuiz, recommendClubs } from "./gemini";
+import { generateInterestQuiz, recommendClubs, chatWithAssistant, type ChatMessage } from "./gemini";
 import { insertRegistrationSchema, quizRequestSchema } from "@shared/schema";
 import { z } from "zod";
 
@@ -197,6 +197,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await storage.markReminderSent(req.params.id);
       res.json({ success: true });
     } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // POST /api/chat - Chat with AI assistant
+  app.post("/api/chat", async (req, res) => {
+    try {
+      const { messages, language = "ru" } = req.body;
+      
+      if (!Array.isArray(messages)) {
+        return res.status(400).json({ error: "Messages must be an array" });
+      }
+      
+      const chatMessages: ChatMessage[] = messages.map((msg: any) => ({
+        role: msg.role,
+        content: msg.content
+      }));
+      
+      const response = await chatWithAssistant(chatMessages, language);
+      res.json({ message: response });
+    } catch (error: any) {
+      console.error("Chat error:", error);
       res.status(500).json({ error: error.message });
     }
   });

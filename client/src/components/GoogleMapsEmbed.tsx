@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { MapPin, Navigation } from "lucide-react";
 
-// Coordinates for Palace of Schoolchildren in Almaty, Kazakhstan
+// Coordinates for Digitalurpaq in Petropavlovsk, Kazakhstan
+// Plus Code: V438+J5W, ул. Таштинова, Петропавловск 150000
 const PALACE_COORDINATES = {
-  lat: 43.2566,
-  lng: 76.9286,
-  address: "Palace of Schoolchildren, Almaty, Kazakhstan"
+  lat: 54.8536,
+  lng: 69.1158,
+  address: "Digitalurpaq, ул. Таштинова, Петропавловск 150000, Kazakhstan",
+  placeName: "Digitalurpaq ПЕТРОПАВЛОВСК"
 };
 
 export function GoogleMapsEmbed() {

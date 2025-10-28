@@ -8,7 +8,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, Home, FileText, Calendar, UserPlus, Phone, BookOpen, Settings } from "lucide-react";
+import { Menu, Home, FileText, Calendar, UserPlus, Phone, BookOpen, Settings, MessageCircle } from "lucide-react";
 
 export function MenuNavigation() {
   const { t } = useTranslation();
@@ -16,6 +16,7 @@ export function MenuNavigation() {
   
   const menuItems = [
     { icon: Home, label: t("home"), path: "/", testId: "menu-home" },
+    { icon: MessageCircle, label: t("chat"), path: "/chat", testId: "menu-chat" },
     { icon: FileText, label: t("rules"), path: "/rules", testId: "menu-rules" },
     { icon: BookOpen, label: t("behaviorGuidelines"), path: "/behavior", testId: "menu-behavior" },
     { icon: Calendar, label: t("schedule"), path: "/schedule", testId: "menu-schedule" },

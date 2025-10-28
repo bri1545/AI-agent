@@ -13,7 +13,7 @@ export function Header() {
             <button className="flex items-center gap-2 hover-elevate active-elevate-2 px-3 py-2 rounded-lg transition-all" data-testid="button-home-logo">
               <GraduationCap className="w-6 h-6 text-primary" />
               <span className="font-semibold text-foreground hidden sm:inline">
-                Palace of Schoolchildren
+                Digitalurpaq
               </span>
             </button>
           </Link>
