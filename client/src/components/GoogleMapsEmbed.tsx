@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { MapPin, Navigation } from "lucide-react";
 
-// Coordinates for Digitalurpaq in Petropavlovsk, Kazakhstan
-// Plus Code: V438+J5W, ул. Таштинова, Петропавловск 150000
+// Coordinates for Дворец школьников "Digital Urpaq" in Petropavlovsk, Kazakhstan
+// V438+J5W, ул. Таштинова, Петропавловск 150000
 const PALACE_COORDINATES = {
-  lat: 54.8536,
-  lng: 69.1158,
-  address: "Digitalurpaq, ул. Таштинова, Петропавловск 150000, Kazakhstan",
-  placeName: "Digitalurpaq ПЕТРОПАВЛОВСК"
+  lat: 54.8537,
+  lng: 69.1458,
+  address: "Дворец школьников Digital Urpaq, V438+J5W, ул. Таштинова, Петропавловск 150000, Kazakhstan",
+  placeName: "Дворец школьников DIGITAL URPAQ"
 };
 
 export function GoogleMapsEmbed() {

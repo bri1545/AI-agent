@@ -210,8 +210,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Messages must be an array" });
       }
       
+      // Convert "assistant" role to "model" for Gemini API
       const chatMessages: ChatMessage[] = messages.map((msg: any) => ({
-        role: msg.role,
+        role: msg.role === "assistant" ? "model" : msg.role,
         content: msg.content
       }));
       

@@ -1,19 +1,19 @@
-# Digitalurpaq Interactive Assistant - Petropavlovsk
+# Дворец школьников "Digital Urpaq" - Petropavlovsk
 
 ## Project Overview
-An interactive web application for Digitalurpaq (Цифровой Урпақ) in Petropavlovsk, Kazakhstan. Features an AI-powered assistant that helps students discover clubs, take interest quizzes, chat with AI about programs, register for activities, and navigate the facility.
+An interactive web application for Дворец школьников "Digital Urpaq" (Цифровой Урпақ) in Petropavlovsk, Kazakhstan. Features an AI-powered assistant that helps students discover clubs, take interest quizzes, chat with AI about programs, register for activities, and navigate the facility.
 
 ## Facility Information
-- **Name**: Digitalurpaq ПЕТРОПАВЛОВСК
-- **Website**: https://digitalurpaq.edu.kz/ru/index.htm
+- **Name**: Дворец школьников "DIGITAL URPAQ"
+- **Website**: https://digitalurpaq.edu.kz
 - **Location**: Petropavlovsk, Kazakhstan
-- **Address**: ул. Таштинова, Петропавловск 150000 (Plus Code: V438+J5W)
-- **Coordinates**: 54.8536°N, 69.1158°E
-- **Phone**: Reception: 8 7152 34-02-40, Front Desk: 8 7152 50-17-03
-- **Email**: dvorecsko@sqo.gov.kz
-- **Working Hours**: Mon-Fri: 09:00-20:10 (break 12:00-15:00), Sat-Sun: 9:00-18:00
-- **Description**: One of the largest institutions of additional education in Petropavlovsk with over 90 clubs across three main directions, 80 of which are FREE
-- **Facilities**: 15 laboratories equipped with modern high-tech equipment
+- **Address**: V438+J5W, ул. Таштинова, Петропавловск 150000
+- **Coordinates**: 54.8537°N, 69.1458°E
+- **Google Maps**: https://www.google.com/maps/place/54.8537,69.1458
+- **Phone**: Приемная: +7 (7152) 34-02-40, Ресепшн: +7 (7152) 50-17-03
+- **Description**: One of the largest institutions of additional education in Petropavlovsk with over 90 clubs across main directions, 80 of which are FREE
+- **Facilities**: 15 modern laboratories with high-tech equipment
+- **IT Center**: For intellectual development of children and youth
 
 ## Key Features
 1. **AI Chat Assistant** - Full conversational AI chat focused on Digitalurpaq topics (NEW!)
@@ -26,31 +26,48 @@ An interactive web application for Digitalurpaq (Цифровой Урпақ) in
 8. **Google Maps Integration** - Virtual tours and directions to the facility (updated to new location)
 9. **Responsive Design** - Works on desktop, tablet, and mobile devices
 
-## Three Main Directions
+## Main Directions
 
-### 1. Scientific-Biological Direction (Научно-биологическое направление)
-- Laboratory of Modern Biotechnology
-- Biology Cabinet
-- Chemistry Cabinet
-- Hydroponics Cabinet
+### 1. IT - ИНФОРМАЦИОННЫЕ ТЕХНОЛОГИИ
+- Programming of control and measurement systems
+- 3D prototyping and modeling
+- LEGO construction and robotics
+- Mechatronics
+- SDR Radio
+- Drone assembly and programming
+- Web development and design
 
-### 2. IT Direction (IT - Информационные технологии)
-- Industrial Internet of Things Laboratory
-- Control and Measurement Systems Programming Laboratory
-- 3D Prototyping Cabinet
-- Holography Cabinet
+### 2. НАУЧНО-БИОЛОГИЧЕСКОЕ НАПРАВЛЕНИЕ
+- Biotechnology
+- Hydroponics ("Green Business")
+- Ecology
+- Scientific research activities
 
-### 3. Artistic-Aesthetic Direction (Художественно-эстетическое направление)
-- Theater clubs
-- Dombra clubs
-- Choreographic clubs
-- Journalism and Media Technology club
+### 3. ХУДОЖЕСТВЕННО-ЭСТЕТИЧЕСКОЕ
+- Art school
+- Fine arts
+- Decorative and applied arts
+- Choreography
 
-## Additional Programs
-- Art School
-- Business School
-- Journalism and Media Technologies
-- Debate Club and KVN
+### 4. ЖУРНАЛИСТИКА И МЕДИАТЕХНОЛОГИИ
+- Media journalism
+- Video production
+- Photography
+- Blogging
+
+### 5. БИЗНЕС ШКОЛА
+- Entrepreneurship basics
+- Financial literacy
+- Business project design
+
+### 6. ДЕБАТНЫЙ КЛУБ И КВН
+- Public speaking mastery
+- Art of debates
+- KVN and humor
+
+### 7. РАЗВЛЕКАТЕЛЬНЫЙ ЦЕНТР
+- Game zones for younger students
+- Interactive lessons
 
 ## Tech Stack
 - **Frontend**: Preact (through React compat layer) + Vite
@@ -185,12 +202,15 @@ The project currently uses in-memory storage. To enable PostgreSQL:
 npm run db:push
 ```
 
-### Sample Data
-The application includes sample clubs across multiple categories aligned with Petropavlovsk Palace programs:
-- IT & Technology: Robotics Lab, Programming, 3D Prototyping
-- Science: Biotechnology, Chemistry, Biology
-- Arts: Theater, Choreography, Dombra, Journalism
-- And more...
+### Available Clubs
+The application includes actual clubs from Дворец школьников "Digital Urpaq":
+- **IT & Technology**: Robotics & LEGO, 3D Prototyping, Programming & Web Dev, Mechatronics, Drone Assembly, SDR Radio
+- **Science**: Biotechnology Lab, Hydroponics - Green Business, Ecology & Environmental Science
+- **Arts**: Art School, Decorative & Applied Arts, Choreography
+- **Media**: Media Journalism, Video Production, Photography, Blogging
+- **Business**: Business School, Financial Literacy
+- **Languages & Culture**: Debate Club, KVN Club
+- **Entertainment**: Entertainment Center for younger students
 
 ## User Workflows
 
@@ -227,17 +247,20 @@ The application includes sample clubs across multiple categories aligned with Pe
 - Environment variables for sensitive data
 
 ## Recent Changes (October 2025)
-- Project adapted for Digitalurpaq Petropavlovsk
+- Project adapted for Дворец школьников "Digital Urpaq" Petropavlovsk
 - **NEW**: Added full AI chat feature with topic-focused conversation
-- **NEW**: Chat assistant only discusses Digitalurpaq-related topics
-- Updated location to new address (ул. Таштинова, Петропавловск 150000)
-- Updated Google Maps integration with new coordinates
-- Updated website reference to https://digitalurpaq.edu.kz
-- Updated contact information and location details
-- Added Digitalurpaq-specific club categories
-- Configured for Replit environment
+- **NEW**: Chat assistant only discusses Digital Urpaq-related topics
+- **NEW**: Added animated assistant character with interactive emotions
+- **UPDATED**: Location to correct address (V438+J5W, ул. Таштинова, Петропавловск 150000)
+- **UPDATED**: Google Maps integration with correct coordinates (54.8537°N, 69.1458°E)
+- **FIXED**: Chat message duplication issue and error handling
+- **UPDATED**: All club data with actual programs from Digital Urpaq
+- **UPDATED**: Contact information (Приемная: +7 (7152) 34-02-40, Ресепшн: +7 (7152) 50-17-03)
+- Added all 7 main directions of education
+- Over 20 actual clubs from Digital Urpaq programs
+- Configured for Replit environment with proper host settings
 - Set up Google Gemini API integration
-- Configured Vite dev server with proper host settings
+- Configured Vite dev server to allow all hosts for iframe proxy
 - Installed all npm dependencies
 
 ## Known Limitations

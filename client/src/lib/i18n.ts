@@ -90,7 +90,7 @@ const resources = {
       // Chat
       chat: "AI Chat",
       chatWithAssistant: "Chat with AI Assistant",
-      askAboutDigitalurpaq: "Ask me anything about Digitalurpaq",
+      askAboutDigitalurpaq: "Ask me anything about Digital Urpaq",
       typeYourMessage: "Type your message...",
       
       // Common
@@ -141,9 +141,9 @@ const resources = {
       contactEmail: "Email",
       contactAddress: "Address",
       contactHours: "Working Hours",
-      contactPhoneValue: "Reception: 8 7152 34-02-40, Front Desk: 8 7152 50-17-03",
+      contactPhoneValue: "Reception: +7 (7152) 34-02-40, Front Desk: +7 (7152) 50-17-03",
       contactEmailValue: "dvorecsko@sqo.gov.kz",
-      contactAddressValue: "150000, Petropavlovsk, Zhambyla Zhabaeva street, 55 A",
+      contactAddressValue: "V438+J5W, Tashtinova street, Petropavlovsk 150000",
       contactHoursValue: "Mon-Fri: 09:00-20:10 (break 12:00-15:00), Sat-Sun: 9:00-18:00",
       
       // Settings
@@ -240,7 +240,7 @@ const resources = {
       // Chat
       chat: "AI Чат",
       chatWithAssistant: "AI көмекшісімен сөйлесу",
-      askAboutDigitalurpaq: "Digitalurpaq туралы кез келген нәрсе сұраңыз",
+      askAboutDigitalurpaq: "Digital Urpaq туралы кез келген нәрсе сұраңыз",
       typeYourMessage: "Хабарламаңызды теріңіз...",
       
       // Common
@@ -291,9 +291,9 @@ const resources = {
       contactEmail: "Электрондық пошта",
       contactAddress: "Мекенжай",
       contactHours: "Жұмыс уақыты",
-      contactPhoneValue: "Қабылдау: 8 7152 34-02-40, Ресепшн: 8 7152 50-17-03",
+      contactPhoneValue: "Қабылдау: +7 (7152) 34-02-40, Ресепшн: +7 (7152) 50-17-03",
       contactEmailValue: "dvorecsko@sqo.gov.kz",
-      contactAddressValue: "150000, Петропавл қаласы, Жамбыл Жабаев көшесі, 55 А",
+      contactAddressValue: "V438+J5W, Таштинова көшесі, Петропавл 150000",
       contactHoursValue: "Дс-Жм: 09:00-20:10 (үзіліс 12:00-15:00), Сб-Жс: 9:00-18:00",
       
       // Settings
@@ -390,7 +390,7 @@ const resources = {
       // Chat
       chat: "AI Чат",
       chatWithAssistant: "Чат с AI помощником",
-      askAboutDigitalurpaq: "Спросите меня о Digitalurpaq",
+      askAboutDigitalurpaq: "Спросите меня о Digital Urpaq",
       typeYourMessage: "Введите ваше сообщение...",
       
       // Common
@@ -441,9 +441,9 @@ const resources = {
       contactEmail: "Email",
       contactAddress: "Адрес",
       contactHours: "Часы работы",
-      contactPhoneValue: "Приемная: 8 7152 34-02-40, Ресепшн: 8 7152 50-17-03",
+      contactPhoneValue: "Приемная: +7 (7152) 34-02-40, Ресепшн: +7 (7152) 50-17-03",
       contactEmailValue: "dvorecsko@sqo.gov.kz",
-      contactAddressValue: "150000, город Петропавловск, улица Жамбыла Жабаева, 55 А",
+      contactAddressValue: "V438+J5W, ул. Таштинова, Петропавловск 150000",
       contactHoursValue: "Пн-Пт: 09:00-20:10 (перерыв 12:00-15:00), Сб-Вс: 9:00-18:00",
       
       // Settings
